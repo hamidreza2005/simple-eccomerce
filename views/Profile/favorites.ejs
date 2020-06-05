@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../layouts/head.ejs %>
+    <style>
+        .img{
+            float: left;
+            width: 50px;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+<% include ../layouts/header.ejs %>
+    <h2><%= title %></h2>
+
+<table class="table table-hover">
+    <thead>
+    <tr style="text-align: center;">
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Operator</th>
+    </tr>
+    </thead>
+    <tbody style="text-align: center;">
+
+        <% for(let i= 0;i<books.length;i++){ %>
+
+            <% for(var x=0;x<user.favorite.length;x++){ %>
+
+                <% if (books[i]._id == user.favorite[x]) {%>
+                    <tr>
+                        <td><%= x+1 %></td>
+                        <td><img src="/images/<%= books[i].cover %>" alt="<%= books[i].cover %>" class="img"><%= books[i].title %></td>
+                        <td> <a class="btn btn-success" href="/cart/add/<%= books[i]._id %>" role="button">Add to Cart</a> <a class="btn btn-primary" href="/books/details/<%= books[i]._id %>" role="button">View</a>&nbsp;&nbsp;<a class="btn btn-danger delete" href="/removefavorite/<%= books[i]._id %>?favoriteList=true" role="button">Delete From Favorite List</a></td>
+                    </tr>
+                <% } %>
+
+            <% } %>
+
+    <% } %>
+    </tbody>
+    </table>
+<% include ../layouts/footer.ejs %>
+</body>
+</html>

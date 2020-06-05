@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include layouts/head.ejs %>
+      <style>
+          .card{
+              display: inline-flex;
+              margin-left: 10px;
+              height: auto;
+              width: 15.5rem;
+          }
+          .card img{
+              height: 300px;
+          }
+      </style>
+  </head>
+  <body>
+    <% include layouts/header.ejs %>
+    <% if(books.length >0){ %>
+
+        <h2>Most Viewed</h2><hr>
+
+        <% for(let i=0;i<books.length;i++){ %>
+            <% if (i ===4){break} %>
+            <div class="card">
+                <img src="/images/<%= books[i].cover %>" class="card-img-top" alt="<%= books[i].cover %>">
+                <div class="card-body">
+                    <h3 class="card-title"><%= books[i].title %></h3>
+                    <p class="card-text h6"><%= books[i].description.substr(0,30)+'...' %></p>
+                    <h4><span style="color: gray">$</span><%= books[i].price %></h4>
+                    <a href="/books/details/<%= books[i]._id %>" class="btn btn-primary">See More</a>
+                </div>
+            </div>
+        <% } %>
+        <% if(user){
+            if ( title ==="My Ecommerce"){ %>
+                <h2>Your Last Viewed</h2>
+                <hr>
+                <% for(let i= 0;i<books.length;i++){ %>
+
+                    <% for(var x=0;x<user.lastViewed.length;x++){ %>
+
+                        <% if (books[i]._id == user.lastViewed[x]) {%>
+                            <div class="card">
+                                <img src="/images/<%= books[i].cover %>" class="card-img-top" alt="<%= books[i].cover %>">
+                                <div class="card-body">
+                                    <h3 class="card-title"><%= books[i].title %></h3>
+                                    <p class="card-text h6"><%= books[i].description.substr(0,30)+'...' %></p>
+                                    <h4><span style="color: gray">$</span><%= books[i].price %></h4>
+                                    <a href="/books/details/<%= books[i]._id %>" class="btn btn-primary">See More</a>
+                                </div>
+                            </div>
+                        <% } %>
+
+                    <% } %>
+        <% }}} %>
+    <% }else{%>
+        <h2 style="text-align: center;margin-top:35px;">NO RESULT FOUND</h2>
+    <% } %>
+    <% include layouts/footer.ejs %>
+  </body>
+</html>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="914ec136-361e-49d2-9a3c-aa014da5a74a" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="EJS" />
+      </list>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/views/index.ejs" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_INSPECTION" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1Tpf4hi0asXzmpSgQYYVOjg4DFz" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="13.1.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../node.jsDanup" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Programming\Tests\nodejspractices\ecommerce\v-02\views\Profile" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Programming\Tests\nodejspractices\ecommerce\public\images" />
+      <recent name="E:\Programming\Tests\nodejspractices\CMS\node_modules" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="914ec136-361e-49d2-9a3c-aa014da5a74a" name="Default Changelist" comment="" />
+      <created>1574161767938</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1574161767938</updated>
+      <workItem from="1574161769204" duration="489000" />
+      <workItem from="1574357668377" duration="283000" />
+      <workItem from="1574358110649" duration="86000" />
+      <workItem from="1574358217149" duration="139000" />
+      <workItem from="1574358377961" duration="165000" />
+      <workItem from="1574358641948" duration="197000" />
+      <workItem from="1574358888280" duration="377000" />
+      <workItem from="1574435576007" duration="377000" />
+      <workItem from="1574435983016" duration="61000" />
+      <workItem from="1574436071193" duration="112000" />
+      <workItem from="1574436203266" duration="600000" />
+      <workItem from="1574611933084" duration="134000" />
+      <workItem from="1574612100997" duration="149000" />
+      <workItem from="1574612270751" duration="144000" />
+      <workItem from="1574612437071" duration="71000" />
+      <workItem from="1574612529512" duration="213000" />
+      <workItem from="1574612764060" duration="360000" />
+      <workItem from="1574695252199" duration="4383000" />
+      <workItem from="1574755361963" duration="505000" />
+      <workItem from="1574881453311" duration="349000" />
+      <workItem from="1574881833162" duration="354000" />
+      <workItem from="1575030500262" duration="2431000" />
+      <workItem from="1575468493931" duration="8522000" />
+      <workItem from="1575482580204" duration="21000" />
+      <workItem from="1575483177214" duration="2039000" />
+      <workItem from="1575560249158" duration="9552000" />
+      <workItem from="1575646185858" duration="9098000" />
+      <workItem from="1575746032932" duration="1159000" />
+      <workItem from="1576157740879" duration="421000" />
+      <workItem from="1576173235802" duration="5000000" />
+      <workItem from="1576225062824" duration="3706000" />
+      <workItem from="1576331186366" duration="2724000" />
+      <workItem from="1576419312020" duration="1318000" />
+      <workItem from="1576429241527" duration="5086000" />
+      <workItem from="1576476387531" duration="4238000" />
+      <workItem from="1576758899229" duration="8077000" />
+      <workItem from="1576779600934" duration="1378000" />
+      <workItem from="1576822363918" duration="1298000" />
+      <workItem from="1576832590890" duration="6223000" />
+      <workItem from="1576937913781" duration="1310000" />
+      <workItem from="1576950346532" duration="5886000" />
+      <workItem from="1577010411012" duration="955000" />
+      <workItem from="1577126909801" duration="1575000" />
+      <workItem from="1577214804645" duration="6275000" />
+      <workItem from="1577259633585" duration="1643000" />
+      <workItem from="1577261390547" duration="634000" />
+      <workItem from="1577383478321" duration="7721000" />
+      <workItem from="1577441297070" duration="980000" />
+      <workItem from="1577443971705" duration="1667000" />
+      <workItem from="1577518872134" duration="22000" />
+      <workItem from="1577550999367" duration="5529000" />
+      <workItem from="1577702554791" duration="503000" />
+      <workItem from="1577708466070" duration="968000" />
+      <workItem from="1577730100672" duration="4209000" />
+      <workItem from="1577734349704" duration="1649000" />
+      <workItem from="1577778163781" duration="559000" />
+      <workItem from="1577857881028" duration="10027000" />
+      <workItem from="1577895357089" duration="22000" />
+      <workItem from="1577896893577" duration="14000" />
+      <workItem from="1578217201316" duration="4735000" />
+      <workItem from="1578460641710" duration="541000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

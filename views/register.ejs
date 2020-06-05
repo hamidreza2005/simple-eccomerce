@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include layouts/head.ejs %>
+</head>
+<body>
+    <% include layouts/header.ejs %>
+    <% if (typeof(error) !== 'undefined') { %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <%= error %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+      <% } %>
+    <h2><%= title %></h2><br>
+    <% if (title == 'Register'){ %>
+        <form role="form" method="POST" action="/register">
+    <% }else{ %>
+        <form role="form" method="POST" action="/adduser">
+    <% } %>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" name="username" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter username">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email</label>
+          <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address</label>
+            <textarea class="form-control" id="address" rows="3" name="address"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary"><%= title %></button>
+      </form>
+    <% include layouts/footer.ejs %>
+</body>
+</html>

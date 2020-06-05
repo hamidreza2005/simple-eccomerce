@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <% include ../layouts/head %>
+    <style>
+        .img{
+            float: left;
+            margin: 25px 0 0 0;
+            width: 300px;
+            height: 400px;
+        }
+        .img img{
+            width: 300px;
+            height: 400px;
+        }
+        .content,form,#sendcommenttitle,#comments{
+            display: block;
+            padding-top: 25px;
+            padding-left: 380px;
+        }
+        h3{
+            margin-top: 15px;
+        }
+        #sendcommenttitle{
+            margin-bottom: -10px;
+        }
+        .card{
+            margin-bottom: 10px;
+        }
+        .favorite{
+            color: red;
+            margin-top: 7px;
+        }
+    </style>
+
+</head>
+<body>
+<% include ../layouts/header %>
+
+    <% if (query.sendComment){ %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            Your Comment Submited and After Accept by We Show :)
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <% }else if(query.addfavorite){ %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            This Books Added to your Favorite List :)
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <% }else if(query.removefavorite){ %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            This Books Removed to your Favorite List :)
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <% } %>
+
+
+    <div class="img">
+        <img src="/images/<%= books[0].cover %>" alt="<%= books[0].cover %>">
+    </div>
+
+    <div class="content">
+        <h2><%= books[0].title %></h2>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-action">Category: <%= books[0].category %></li>
+            <li class="list-group-item list-group-item-action">Publisher: <%= books[0].publisher %></li>
+            <li class="list-group-item list-group-item-action">View: <%= books[0].view %></li>
+        </ul>
+        <h3>$&nbsp;<%= books[0].price %></h3>
+        <div class="alert alert-dark" role="alert">
+            <%= books[0].description %>
+        </div>
+        <a href="/cart/add/<%= books[0]._id %>" class="btn btn-success" id="addcart">Add To Cart</a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <%
+         var like = false;
+
+         if (user){
+             for(var y of user.favorite){
+             if(y == books[0]._id){ %>
+                <a href="/removefavorite/<%= books[0]._id %>"><i class="fas fa-heart fa-2x favorite"></i></a>
+        <%      like = true
+                break
+        }   else{
+                continue
+            }}} %>
+
+
+        <% if (!like){ %>
+        <a href="/addfavorite/<%= books[0]._id %>"><i class="far fa-heart fa-2x favorite"></i></a>
+        <% } %>
+    </div>
+
+    <div id="comments">
+        <% for(var x of comments){ %>
+            <div class="card" >
+                <div class="card-header">
+                    <%= x.sender %>:
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p><%= x.content %></p>
+                        <footer class="blockquote-footer"><%= x.date %></footer>
+                    </blockquote>
+                </div>
+            </div>
+        <% } %>
+    </div>
+
+    <% if(user){ %>
+        <h4 id="sendcommenttitle">Send Comment:</h4>
+        <form method="post" action="/comments/add/<%= books[0]._id %>">
+            <div class="form-group">
+                <label for="ctext">Comment Text:</label>
+                <textarea class="form-control" id="ctext" rows="3" name="content"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    <% }else{ %>
+        <br>
+        <h5 style="text-align: center">You Should First Login to Send Comment</h5>
+    <% } %>
+
+<% include ../layouts/footer %>
+</body>
+</html>

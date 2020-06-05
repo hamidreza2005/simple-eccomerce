@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../layouts/header.ejs %>
+</head>
+<body>
+<% include ../layouts/head.ejs %>
+<h2><%= title %></h2><hr>
+
+<% if (query.commentManagement){ %>
+    <form action="/comments/edit/<%= comment[0]._id %>?commentManagement=true" method="post">
+<% }else{ %>
+    <form action="/comments/edit/<%= comment[0]._id %>" method="post">
+<% } %>
+    <div class="form-group">
+        <label for="content">Content:</label>
+        <textarea name="content" id="content" class="form-control" rows="6"><%= comment[0].content %></textarea>
+    </div>
+    <button type="submit" class="btn-success btn"><%= title %></button>
+</form>
+
+<% include ../layouts/footer.ejs %>
+</body>
+</html>

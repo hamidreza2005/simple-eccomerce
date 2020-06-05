@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a href="/" class="navbar-brand"><%= app_title %></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbarsExampleDefault" class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <% for (var i=0;i<categories.length;i++) {%>
+                        <a class="dropdown-item" href="/categories/details/<%= categories[i].name %>"><%= categories[i].name %></a>
+                    <%}%>
+                </div>
+            </li>
+            <% if(typeof(user)!== 'undefined'){ %>
+              <li class="nav-item"><a href="/profile" class="nav-link">Profile</a></li>
+                <% if (user.level == 'admin'){ %>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Management</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown02">
+                            <a class="dropdown-item" href="/books/add">Add Book</a>
+                            <a class="dropdown-item" href="/categories/add">Add Category</a>
+                            <a class="dropdown-item" href="/profile/commentmanagement/noaccepted">Comment Management</a>
+                        </div>
+                    </li>
+                <% } %>
+            <% } %>
+        </ul>
+    </div>
+    <div id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+<!--            <form class="form-inline my-0 my-lg-0" method="get" action="/search">-->
+<!--                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="q" style="display: inline-block">-->
+<!--                <button class="btn btn-secondary my-0 my-sm-0 " style="display: inline-flex" type="submit">Search</button>-->
+<!--            </form>-->
+            <% if(typeof(user)!== 'undefined'){ %>
+                <li class="nav-item"><a class="nav-link">Hello <b><%= user.username %></b></a></li>
+                <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+                <li class="nav-item"><a href="/cart" class="nav-link">Cart</a></li>
+                <% if (user.level == 'admin'){ %>
+                <li class="nav-item"><a href="/adduser" class="nav-link">Add User</a></li>
+                <% } %>
+            <% }else{ %>  
+                <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+                <li class="nav-item"><a href="/register" class="nav-link">Register</a></li>
+                <li class="nav-item"><a href="/cart" class="nav-link">Cart</a></li>
+            <% } %>
+        </ul>
+    </div>
+</nav>
+<div class="Main container">

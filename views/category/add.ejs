@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ../layouts/head.ejs %>
+</head>
+<body>
+<% include ../layouts/header.ejs %>
+<!--    Alerts-->
+    <% if(typeof(error) !== 'undefined'){ %>
+        <% for(var i of error) {%>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <%= i.msg %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+         <% } %>
+    <% } %>
+<!--Edit Configs-->
+<% if (typeof(categories) !== 'undefined') {
+    if (typeof(id) !== 'undefined'){
+      for(var i=0;i<categories.length;i++) {
+            if (categories[i]._id == id){
+                var name = categories[i].name;
+                var id = categories[i]._id;
+            }
+        }
+  }
+}else{
+    var name = '';
+    var id = categories[i]._id;
+}%>
+
+
+<h2><%= title %></h2>
+<% if (name){ %>
+<form method="post" action="/categories/edit/<%= id %>">
+<% }else{ %>
+<form method="post" action="/categories/add">
+<% } %>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name" value="<%= name %>">
+    </div>
+
+    <button type="submit" class="btn btn-primary"><%= title %></button>
+</form>
+
+<% include ../layouts/footer.ejs %>
+</body>
+</html>

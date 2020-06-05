@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include layouts/head.ejs %>
+    <style>
+        .img{
+            float: left;
+            width: 50px;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+<% include layouts/header.ejs %>
+<h2><%= title %></h2><br>
+<table class="table table-hover">
+    <thead>
+        <tr style="text-align: center;">
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Publisher</th>
+            <th scope="col">Price</th>
+            <th scope="col">Operator</th>
+        </tr>
+    </thead>
+    <tbody style="text-align: center;">
+
+    <%
+        var totalprice = 0;
+
+    %>
+
+    <% if(user){ %>
+
+    <% for(let i= 0;i<products.length;i++){ %>
+
+        <% for(var x=0;x<user.cart.length;x++){ %>
+
+            <% if (products[i]._id == user.cart[x]) {%>
+                <tr>
+                    <td><%= x+1 %></td>
+                    <td><img src="/images/<%= products[i].cover %>" alt="<%= products[i].cover %>" class="img"><%= products[i].title %></td>
+                    <td><%= products[i].category %></td>
+                    <td><%= products[i].publisher %></td>
+                    <td>$<%= products[i].price %></td>
+                    <td><a class="btn btn-success" href="/books/details/<%= products[i]._id %>" role="button">View</a>&nbsp;&nbsp;<a class="btn btn-danger delete" href="/cart/delete/<%= products[i]._id %>" role="button">Delete</a></td>
+                    <% totalprice += eval(products[i].price) %>
+                </tr>
+            <% } %>
+
+        <% } %>
+
+    <% } %>
+
+    <% }else{ %>
+
+        <%
+            cart.reverse()
+        for(let i= 0;i<products.length;i++){ %>
+
+            <% for(var y=0;y<cart.length;y++){ %>
+
+                <% if (products[i]._id == cart[y]) {%>
+                    <tr>
+                        <td><%= y+1 %></td>
+                        <td><img src="/images/<%= products[i].cover %>" alt="<%= products[i].cover %>" class="img"><%= products[i].title %></td>
+                        <td><%= products[i].category %></td>
+                        <td><%= products[i].publisher %></td>
+                        <td>$<%= products[i].price %></td>
+                        <td><a class="btn btn-success" href="/books/details/<%= products[i]._id %>" role="button">View</a>&nbsp;&nbsp;<a class="btn btn-danger delete" href="/cart/delete/<%= products[i]._id %>" role="button">Delete</a></td>
+                        <% totalprice += eval(products[i].price) %>
+                    </tr>
+                <% } %>
+
+            <% } %>
+
+        <% } %>
+
+    <% } %>
+    </tbody>
+</table>
+
+<% if (totalprice != 0){ %>
+<table class="table table-hover">
+    <tbody style="text-align: center;">
+        <td><a class="btn btn-primary" href="javascript:void(0)">Order Submission</a></td>
+        <td><h3>Total Price: <%= totalprice %></h3></td>
+        <td><a class="btn btn-danger delete" href="/cart/empty" role="button">Delete All Products</a></td>
+    </tbody>
+</table>
+<% }else{ %>
+    <h2 style="text-align: center">Cart is Empty :(</h2>
+<% } %>
+<% include layouts/footer.ejs %>
+<script>
+  $(document).ready(function(){
+    $(".delete").click(function(){
+      if(! confirm('Are You Sure?')){
+        event.preventDefault()
+      }
+    })
+  });
+</script>
+</body>
+</html>

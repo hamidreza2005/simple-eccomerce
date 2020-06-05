@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../layouts/head.ejs %>
+      <style>
+          .img{
+              float: left;
+              width: 50px;
+              height: 60px;
+          }
+          .list-group{
+              float: right;
+              width: 200px;
+              margin-top: 10px;
+          }
+      </style>
+  </head>
+  <body>
+    <% include ../layouts/header.ejs %>
+    <ul class="list-group">
+        <li class="list-group-item"><a href="/profile">Profile</a></li>
+        <li class="list-group-item"><a href="/profile/favorites">Favorites</a></li>
+        <li class="list-group-item"><a href="/profile/mycomments">My Comment</a></li>
+        <li class="list-group-item"><a href="/profile/resetpassword">Reset Password</a></li>
+    </ul>
+    <h2>Profile</h2><hr>
+    <% if (typeof(books) !== 'undefined' ){ %>
+        <h3>Books</h3>
+        <table class="table table-hover">
+          <thead>
+            <tr style="text-align: center;">
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Category</th>
+              <th scope="col">Publisher</th>
+              <th scope="col">Price</th>
+              <th scope="col">Views</th>
+              <th scope="col">Operator</th>
+            </tr>
+          </thead>
+          <tbody style="text-align: center;">
+            <% for(let i= 0;i<books.length;i++){ %>
+              <tr>
+                <th scope="row"><%= i+1 %></th>
+                <td><img src="/images/<%= books[i].cover %>" alt="<%= books[i].cover %>" class="img"><%= books[i].title %></td>
+                <td><%= books[i].category %></td>
+                <td><%= books[i].publisher %></td>
+                <td>$<%= books[i].price %></td>
+                <td><%= books[i].view %></td>
+                <td><a class="btn btn-primary" href="/books/edit/<%= books[i]._id %>" role="button">Edit</a>&nbsp;&nbsp;<a class="btn btn-success" href="/books/details/<%= books[i]._id %>" role="button">View</a>&nbsp;&nbsp;<a class="btn btn-danger delete" href="/books/delete/<%= books[i]._id %>" role="button">Delete</a></td>
+              </tr>
+            <% } %>
+
+          </tbody>
+        </table>
+
+        <br>
+
+        <h3>Categories</h3>
+        <table class="table table-hover">
+            <thead>
+            <tr style="text-align: center;">
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Operator</th>
+            </tr>
+            </thead>
+            <tbody style="text-align: center;">
+            <% for(let i= 0;i<categories.length;i++){ %>
+                <tr>
+                    <th scope="row"><%= i+1 %></th>
+                    <td><%= categories[i].name %></td>
+                    <td><a class="btn btn-primary" href="/categories/edit/<%= categories[i]._id %>" role="button">Edit</a>&nbsp;&nbsp;<a class="btn btn-success" href="/categories/details/<%= categories[i].name %>" role="button">View</a>&nbsp;&nbsp;<a class="btn btn-danger delete" href="/categories/delete/<%= categories[i]._id %>" role="button">Delete</a></td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+
+    <% }else{ %>
+        <p>Hi <%= user.username %></p>
+        <p>Address: <%= user.address %></p>
+    <% } %>
+    <% include ../layouts/footer.ejs %>
+    <script>
+    $(document).ready(function(){
+      $(".delete").click(function(){
+        if(! confirm('Are You Sure?')){
+          event.preventDefault()
+        }
+      })
+    });
+    </script>
+  </body>
+</html>

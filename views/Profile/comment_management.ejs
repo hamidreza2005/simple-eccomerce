@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../layouts/head.ejs %>
+    <style>
+        .img{
+            float: left;
+            width: 50px;
+            height: 60px;
+        }
+        .btn{
+            margin-bottom:5px ;
+        }
+    </style>
+</head>
+<body>
+<% include ../layouts/header.ejs %>
+<% if (query.allAccepted){ %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        All Comments Accepted :)
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<% }else if(query.edited){%>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Your Comment Edited :)
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<% }else if (query.deleted){ %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Your Comment Deleted :)
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<% } %>
+<h2><%= title %></h2>&nbsp;&nbsp;
+<% if (title == 'Comment Management-All'){ %>
+    <h4><a href="/profile/commentmanagement/noaccepted">See No Accepted</a></h4>
+<% }else{ %>
+    <h4><a href="/profile/commentmanagement/all">See All</a></h4>
+<% } %>
+<hr>
+
+<table class="table table-hover">
+    <thead>
+    <tr style="text-align: center;">
+        <th scope="col">#</th>
+        <th scope="col">Sender</th>
+        <th scope="col">Text</th>
+        <th scope="col">in</th>
+        <th scope="col">Date</th>
+        <th scope="col">Accepted</th>
+        <th scope="col">Operation</th>
+    </tr>
+    </thead>
+    <tbody style="text-align: center;">
+    <% for(let i= 0;i<comments.length;i++){ %>
+        <% for (var x=0;x<books.length;x++){ %>
+            <% if (comments[i]['for'] == books[x]._id){ %>
+                <tr>
+                    <td><%= i+1 %></td>
+                    <td><%= comments[i].sender %></td>
+                    <td><%= comments[i].content %></td>
+                    <td><img src="/images/<%= books[x].cover %>" alt="<%= books[x].cover %>" class="img"><%= books[x].title %></td>
+                    <td><%= comments[i].date %></td>
+                    <td><%= comments[i].accepted %></td>
+                    <td><a class="btn btn-primary" href="/comments/edit/<%= comments[i]._id %>?commentManagement=true" role="button">Edit</a>&nbsp;&nbsp;<a class="btn btn-success" href="/books/details/<%= books[x]._id %>" role="button">View</a>&nbsp;&nbsp;<a class="btn btn-danger delete" href="/comments/delete/<%= comments[i]._id %>?commentManagement=true" role="button">Delete</a></td>
+                </tr>
+            <% } %>
+        <% } %>
+    <% } %>
+
+    </tbody>
+</table>
+
+<form action="/profile/commentmanagement/acceptall" method="post">
+    <button class="btn btn-success" type="submit">Accept All</button>
+</form>
+
+<% include ../layouts/footer.ejs %>
+<script>
+  $(document).ready(function(){
+    $(".delete").click(function(){
+      if(! confirm('Are You Sure?')){
+        event.preventDefault()
+      }
+    })
+  });
+</script>
+</body>
+</html>
